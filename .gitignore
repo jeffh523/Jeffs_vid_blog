@@ -1,0 +1,10 @@
+*.log
+*.pot
+*.pyc
+*.py~
+local_settings.py
+env/
+.idea/
+config.ini
+*.db
+*.sqlite3
