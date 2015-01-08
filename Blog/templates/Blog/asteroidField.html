@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		{% load staticfiles %}
+		<title>Jeff's Blog - Asteroids</title>
+		<script type="text/javascript" src="{% static 'Blog/scripts/game.js' %}"></script>
+		<style>
+			body {
+				margin: 0;
+			}
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body onload='setup();'>
+		<script src="{% static 'Blog/scripts/three.min.js' %}"></script>
+		<script src="http://mrdoob.github.com/three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
+		<script src="{% static 'Blog/scripts/keyboard.js' %}"></script>
+		<script src="{% static 'Blog/scripts/game.js' %}"></script>
+	</body>
+</html>

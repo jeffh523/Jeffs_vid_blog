@@ -4,40 +4,46 @@
 	{% block title %}
 	{% endblock %}
 	{% load staticfiles %}
+	<title> Jeff's Blog </title>
 	<link type="text/css" rel="stylesheet" href="{% static 'Blog/css/blogstylesheet.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>	{% block stylesheets %}
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Oxygen:400' rel='stylesheet' type='text/css'>
+	{% block stylesheets %}
 	{% endblock %}
 </head>
 <body>
 	{% load Blog_extras %}
-	<div id = "container">
-		<div id = "header">
-			<h1> JEFF'S BLOG. HECK YES. </h1>
+	<div id = "header-container">
+		<div id = "header" class = "no-select text-shadow">
+			<h1> JEFF'S BLOG. </h1>
 		</div>
 		<div id = "navbar">
 			<ul>
-				<!-- links to nowhere -->
+				<!-- links to other pages in the site -->
 				<li><a href = "#"> Home </a></li>
 				<li><a href = "#"> About Me </a></li>
-				<li><a href = "#"> Projects </a></li>
+				<li><a href = "/asteroidField/">Projects</a></li>
 				<li><a href = "#"> Contact </a></li>
 			</ul>
 		</div>
+	</div>
+	<div id = "content-container">
 		{% for post in posts %}
 		<div class="post">
-			<h2 class="postTitle">{{ post.title }}</h2>
-			<div class="postVideo"> 
+			<h2 class="post-title no-select text-shadow">{{ post.title }}</h2>
+			<div class="post-video"> 
 				{{ post.videoURL|convert_youtube_to_embed|safe }} 
 			</div> 
-			<div class="postDateCreated">
+			<div class="post-date-created">
 				{{ post.dateCreated }}
 			</div>
-			<div class="postContent"> 
+			<div class="post-content"> 
 				{{ post.content }}
 			</div>
 		</div>
 		<br />
 		{% endfor %}
+	</div>	
 	</div>
 </body>
 </html> 

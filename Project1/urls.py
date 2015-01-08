@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	
 	url(r'^$', 'Blog.views.home', name='home'),
+	
+	url(r'^asteroidField', 'Blog.views.asteroidField', name='asteroidField'),
 
 	url(r'^admin/', include(admin.site.urls)),
 	

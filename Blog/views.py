@@ -9,4 +9,7 @@ def home(request):
     template = loader.get_template("Blog/home.html")
     context = RequestContext(request, {"posts": posts})
     return HttpResponse(template.render(context))
+	
+def asteroidField(request):
+	return render(request, 'Blog/asteroidField.html')
     

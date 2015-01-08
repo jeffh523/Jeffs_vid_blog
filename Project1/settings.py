@@ -1,21 +1,16 @@
 import os
-import ConfigParser
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-config = ConfigParser.ConfigParser()
-config.read(os.path.join(BASE_DIR, '..', 'config.ini'))
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(config.get('django', 'secret_key'))
+SECRET_KEY = '<secret key>'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-# enter domains for production
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = []				# enter domains for production
 
 
 # Application definition
