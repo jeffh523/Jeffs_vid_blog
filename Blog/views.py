@@ -10,6 +10,7 @@ def home(request):
     context = RequestContext(request, {"posts": posts})
     return HttpResponse(template.render(context))
 	
-def asteroidField(request):
-	return render(request, 'Blog/asteroidField.html')
+def asteroid_field(request):
+	return render(request, 'Blog/asteroid_field.html')
+	
     

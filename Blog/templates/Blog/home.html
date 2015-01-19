@@ -13,20 +13,21 @@
 </head>
 <body>
 	{% load Blog_extras %}
-	<div id = "header-container">
-		<div id = "header" class = "no-select text-shadow">
-			<h1> JEFF'S BLOG. </h1>
-		</div>
-		<div id = "navbar">
-			<ul>
-				<!-- links to other pages in the site -->
-				<li><a href = "#"> Home </a></li>
-				<li><a href = "#"> About Me </a></li>
-				<li><a href = "/asteroidField/">Projects</a></li>
-				<li><a href = "#"> Contact </a></li>
-			</ul>
-		</div>
+	<div id = "header" class = "no-select text-shadow">
+		<h1> JEFF'S BLOG. </h1>
 	</div>
+	<ul id = "navbar">
+		<li><a href = "#"> Home </a></li>
+		<li><a href = "#"> About Me </a></li>
+		<li><a href = "#">Projects</a>
+			<ul>
+				<li><a href = "/asteroid_field/"> Asteroids </a></li>
+				<li><a href = "https://github.com/jeffh523/"> GitHub </a></li>
+			</ul>
+		</li>
+		<li><a href = "#"> Contact </a></li>
+	</ul>
+	<div style = "clear:both"></div>
 	<div id = "content-container">
 		{% for post in posts %}
 		<div class="post">

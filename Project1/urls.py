@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 	
 	url(r'^$', 'Blog.views.home', name='home'),
 	
-	url(r'^asteroidField', 'Blog.views.asteroidField', name='asteroidField'),
+	url(r'^asteroid_field', 'Blog.views.asteroid_field', name='asteroid_field'),
 
 	url(r'^admin/', include(admin.site.urls)),
 	

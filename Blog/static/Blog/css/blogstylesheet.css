@@ -2,29 +2,18 @@
 STYLE SHEET FOR JEFF'S BLOG
 2014
 */
-
 	
-#header-container {
+#header {
 	margin: 0 auto;
 	width: 750px;
 	text-align: center;
-}
-
-#content-container {
-	width: 750px;
-	margin: 120px auto 0;
-	padding: 1px;
-	text-align: center;
-}
-	
-#header {
 	background: #4D4DFF; /* Blue */
 	font-family: "Lato", sans-serif;
 	font-size: 22px;
 	font-weight: 900;
 	word-spacing: 7px;
 	color: #fff; /* white */
-	padding: 18px;
+	padding: 18px 0;
 	/*border: 1px solid black;
 	border-bottom: none;*/
 }
@@ -40,10 +29,10 @@ STYLE SHEET FOR JEFF'S BLOG
 
 .text-shadow {
 text-shadow:
-		-1px -1px 0 black,
-		1px -1px 0 black,
-		-1px 1px 0 black,
-		1px 1px 0 black; 
+	-1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black; 
 }
 
 #header h1 {
@@ -52,59 +41,89 @@ text-shadow:
 }
 
 #navbar {
-	float: left;
+	text-align: left;
+	margin: 0 auto;
 	width: 750px;
-	background: #29331F;  /* charcoal black */
-	border-bottom: 150px;
-}
-
-#navbar ul {
-	margin: 0;
 	padding: 0;
+	background: #29331F; /* charcoal black */
 }
 
-#navbar ul li {
-	list-style-type: none;
-	display: inline;
-}
-
-#navbar li a {
-	display: block;
-	float: left;
-	padding: 10px 58px;
-	color: white;
+#navbar li {
 	font-family: "Lato", sans-serif;
 	font-weight: bold;
 	font-size: 18px;
+	display: inline-block;
+	position: relative;
+	padding: 13px 0;
+	background: #29331F; /* charcoal black */
+}
+
+#navbar li a {
+	color: white;
 	text-decoration: none;
-	border-right: 1px solid #fff;   /* white */
+	padding: 13px 58px;
 }
 
-#navbar li a:hover {
-	background: #4C4C33; /* gray */
-	color: black;
-}
-
-#navbar li:first-child a {
-	padding-left: 75px;
-}
-
-
-/* remove border for last navbar element */
 #navbar li:last-child a {
+	padding-left: 66px;
 	border-right: none;
+}
+
+#navbar li:hover {
+	background: #3D3D29; /* dark grey */
+}
+
+#navbar li ul {
+	padding: 0;
+	text-align: center;
+	position: absolute;
+	top: 47px;
+	left: 0;
+	width: 184px;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#navbar li ul li {
+	font-family: "Lato", sans-serif;
+	font-size: 15px;
+	background: #29331F; /* charcoal black */ 
+	display: block; 
+	color: white;
+	padding: 14px 0;
+}
+
+#navbar li ul li:last-child {
+	border-bottom: 1px solid black;
+}
+
+#navbar li ul li:hover {
+	background: #3D3D29; /* dark grey */
+}
+
+#navbar li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#content-container {
+	width: 750px;
+	margin: 120px auto 0;
+	padding: 1px;
+	text-align: center;
 }
 
 .post {
 	margin: 50px 75px 60px;
 	background: white;
 	border-radius: 5px;
-	/*outline: 1px solid black;*/
 }
 
 .post-title {
 	padding: 15px 50px 15px;
-	background: #FF0066;
+	background: #FF0066;  /* pink */
 	border-radius: 10px;
 	color: #fff; /* white */
 	font-family: "Lato", sans-serif;
@@ -127,8 +146,6 @@ text-shadow:
 
 .post-content {
 	padding: 10px 15px;
-	border-radius: 10px;
-	background: #CCE0FF;
 	text-align: left;
 	font-family: "Oxygen", sans-serif;
 	font-size: 17px;
