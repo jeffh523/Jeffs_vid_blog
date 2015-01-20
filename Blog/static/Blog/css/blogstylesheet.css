@@ -94,9 +94,6 @@ text-shadow:
 	padding: 14px 0;
 }
 
-#navbar li ul li:last-child {
-	border-bottom: 1px solid black;
-}
 
 #navbar li ul li:hover {
 	background: #3D3D29; /* dark grey */
@@ -146,6 +143,7 @@ text-shadow:
 
 .post-content {
 	padding: 10px 15px;
+	outline: 1px solid silver;
 	text-align: left;
 	font-family: "Oxygen", sans-serif;
 	font-size: 17px;

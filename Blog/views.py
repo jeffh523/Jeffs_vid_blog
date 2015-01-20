@@ -12,5 +12,10 @@ def home(request):
 	
 def asteroid_field(request):
 	return render(request, 'Blog/asteroid_field.html')
+
+def about_me(request):
+	return render(request, 'Blog/about_me.html')
 	
+def contact(request):
+	return render(request, 'Blog/contact.html')
     

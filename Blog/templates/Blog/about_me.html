@@ -17,8 +17,8 @@
 		<h1> JEFF'S BLOG. </h1>
 	</div>
 	<ul id = "navbar">
-		<li><a href = "#"> Home </a></li>
-		<li><a href = "/about_me"> About Me </a></li>
+		<li><a href = "/"> Home </a></li>
+		<li><a href = "#"> About Me </a></li>
 		<li><a href = "#">Projects</a>
 			<ul>
 				<li><a href = "/asteroid_field/"> Asteroids </a></li>
@@ -29,22 +29,15 @@
 	</ul>
 	<div style = "clear:both"></div>
 	<div id = "content-container">
-		{% for post in posts %}
 		<div class="post">
-			<h2 class="post-title no-select text-shadow">{{ post.title }}</h2>
-			<div class="post-video"> 
-				{{ post.videoURL|convert_youtube_to_embed|safe }} 
-			</div> 
-			<div class="post-date-created">
-				{{ post.dateCreated }}
-			</div>
-			<div class="post-content"> 
-				{{ post.content }}
-			</div>
+			<h2 class="post-title no-select text-shadow">About Me</h2>
+			<img src = "{% static 'Blog/images/man.png' %}"></img>
+			<p class = "post-content"> Hello! My name is Jeff and I am an aspiring software developer.
+				I am a student in the BCS (Bachelor of Computer Science) program 
+				at UBC and I also have a BA in Political Science from UVic. I am 
+				interested in game development and web application development.
+			</p>
 		</div>
-		<br />
-		{% endfor %}
-	</div>	
 	</div>
 </body>
 </html> 

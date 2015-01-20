@@ -10,6 +10,10 @@ urlpatterns = patterns('',
 	url(r'^$', 'Blog.views.home', name='home'),
 	
 	url(r'^asteroid_field', 'Blog.views.asteroid_field', name='asteroid_field'),
+	
+	url(r'^about_me', 'Blog.views.about_me', name='about_me'),
+	
+	url(r'^contact', 'Blog.views.contact', name='contact'),
 
 	url(r'^admin/', include(admin.site.urls)),
 	
