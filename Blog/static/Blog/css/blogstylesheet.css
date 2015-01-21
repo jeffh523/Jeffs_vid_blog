@@ -25,6 +25,7 @@ STYLE SHEET FOR JEFF'S BLOG
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+	cursor: default;
 }
 
 .text-shadow {
@@ -107,7 +108,7 @@ text-shadow:
 
 #content-container {
 	width: 750px;
-	margin: 120px auto 0;
+	margin: 60px auto 0;
 	padding: 1px;
 	text-align: center;
 }

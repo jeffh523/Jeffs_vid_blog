@@ -21,10 +21,10 @@ var playerSpeed = 1.7,
 	playerRotZ = 0; // Change in Z-axis rotation (barrel roll)
 
 var sprites = [],
-	spriteQuality = 7;
+	spriteQuality = 7,
 	spriteMinRadius = 20,
 	spriteMaxRadius = 150,
-	spriteSpeed = 60;
+	spriteSpeed = 65;
 
 var torusTubeDiameter = 15;
 
@@ -36,7 +36,8 @@ var score = 0,
 	isGameOver = false;
 var	gameOverTxt;
 var scoreTxt,  
-	msg;
+	msg,
+	instructions;
 
 ///////////////////////////////////////////////////////
 
@@ -130,7 +131,7 @@ function createScene() {
 	scoreTxt.style.width = 60;
 	scoreTxt.style.height = 30;
 	scoreTxt.innerHTML = 'Score';
-	scoreTxt.style.top = (HEIGHT * 0.9) + 'px';
+	scoreTxt.style.top = (HEIGHT * 0.88) + 'px';
 	scoreTxt.style.left = (WIDTH * 0.43) + 'px';
 	scoreTxt.style.backgroundColor = '#3333FF';
 	scoreTxt.style.color = 'white';
@@ -139,7 +140,7 @@ function createScene() {
 	scoreTxt.style.borderRadius = '10px'
 	scoreTxt.style.fontSize = 32 + 'px';
 	scoreTxt.style.fontWeight = 'bold';
-	scoreTxt.style.padding = '8px 20px';
+	scoreTxt.style.padding = '12px 30px';
 	scoreTxt.setAttribute('id', 'scoreTxt');
 	document.body.appendChild(scoreTxt);
 
@@ -150,13 +151,30 @@ function createScene() {
 	msg.style.height = 30;
 	msg.innerHTML = '';
 	msg.style.top = (HEIGHT * 0.07) + 'px';
-	msg.style.left = (WIDTH * 0.46) + 'px';
+	msg.style.left = (WIDTH * 0.43) + 'px';
 	msg.style.color = 'white';
 	msg.style.fontSize = 40 + 'px';
 	msg.style.fontWeight = 'bold';
 	msg.style.padding = 10 + 'px';
 	msg.setAttribute('id', 'msg');
 	document.body.appendChild(msg);
+
+	// Create a div for showing controls and how to play again
+	instructions = document.createElement('instructions');
+	instructions.style.position = 'absolute';
+	instructions.style.width = 50;
+	instructions.style.height = 50;
+	instructions.innerHTML = 'Move: W, A, S, D' + '<br/>' 
+								+ 'Roll Left/Right: K, L';
+	instructions.style.top = (HEIGHT * 0.8) + 'px';
+	instructions.style.left = (WIDTH * 0.02) + 'px';
+	instructions.style.color = 'white';
+	instructions.style.borderRadius = '10px'
+	instructions.style.fontSize = 24 + 'px';
+	instructions.style.padding = '20px 20px';
+	instructions.style.textAlign = 'center';
+	instructions.setAttribute('id', 'instructions');
+	document.body.appendChild(instructions);
 }
 
 function draw() {	
@@ -196,9 +214,9 @@ function handleKey() {
 	else 
 		playerDY = 0;
 	// handle roll left/right
-	if (Key.isDown(Key.COMMA))
+	if (Key.isDown(Key.K))
 		playerRotZ = -1;
-	else if (Key.isDown(Key.PERIOD)) 
+	else if (Key.isDown(Key.L)) 
 		playerRotZ = 1;
 	else
 		playerRotZ = 0;
@@ -256,8 +274,17 @@ function generateSprites() {
 		
 		// some default initial values for sprites 
 		var isPoints = false;
-		var spriteMaterial = new THREE.MeshLambertMaterial(
-				{color: 0x663300}); // Orange/Brown
+		var color = {color: 0x522900};	// Orange/Brown
+		// randomize asteroid colors!
+		if (randNum > 15 && randNum <= 20)
+			color = {color: 0x4C004C};  // purple
+		else if (randNum > 10 && randNum <= 15)
+			color = {color: 0x00005C};  // dark blue
+		else if (randNum > 5 && randNum <= 10)
+			color = {color: 0x005C1F};  // dark green
+		else if(randNum > 0 && randNum <= 5)
+			color = {color:0x4C0000};   // maroon
+		var spriteMaterial = new THREE.MeshLambertMaterial(color); 
 		var spriteGeom = new THREE.SphereGeometry(rad, spriteQuality, spriteQuality);
 
 		// assign some sprites to be points instead of asteroids.
@@ -267,9 +294,9 @@ function generateSprites() {
 			spriteY < 300 && spriteY > -100 &&
 			spriteX < 200 && spriteX > -200) {
 			spriteMaterial = new THREE.MeshLambertMaterial(
-				{color: 0xFF1975});  // Pink
+				{color: 0x3D3D00});  // Gold
 			isPoints = true;
-			spriteGeom = new THREE.TorusGeometry(rad, torusTubeDiameter, 20, 20, Math.PI*2); // Torus
+			spriteGeom = new THREE.TorusGeometry(rad, torusTubeDiameter, 12, 12, Math.PI*2); // Torus
 		}
 
 		// create the sprite model
@@ -302,7 +329,7 @@ function moveSprites() {
 		if (!sprite.isPoints) 
 			sprite.rotation.x += Math.PI * 2/180;
 		else  // make point rings spin
-			sprite.rotation.z += Math.PI * 3/180;
+			sprite.rotation.z += Math.PI * 4/180;
 		// get rid of sprites that have flown past camera
 		if (sprite.position.z >= 500) {
 			sprites.splice(i, 1);
@@ -345,7 +372,8 @@ function collisionCheck(sprite) {
 }
 
 // Freezes game in current state,
-// displays "Game Over" message
+// displays "Game Over" message,
+// and writes "refresh to play again" in instruction div
 function gameOver() {
 	isGameOver = true;
 
@@ -375,9 +403,12 @@ function gameOver() {
 	scene.add(gameOverTxt);
 	gameOverTxt.position.set(-70, 80, 200);
 
+	instructions.innerHTML = 'REFRESH TO PLAY AGAIN' + '<br/><br/>'  
+			+ 'Move: W, A, S, D' + '<br/>' 
+			+ 'Roll Left/Right: K, L';
 }
 
-// updates score in the scoreTxt div
+// updates score in the scoreTxt scoreTxt
 function updateScore() {
 	if (!isGameOver) {
 		score++;
