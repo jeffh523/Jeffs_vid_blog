@@ -37,26 +37,29 @@
 	</nav>
 	<div class = "container">
 		<div class = "jumbotron text-center">
-			<h1> Jeff's Blog </h1>
-		</div>
-	</div>
-	<div class = "container">
-	{% for post in posts %}
-		<div class = "container">
-			<div class = "text-center" style = "margin: 0 auto;">
-				<h2>{{ post.title }}</h2>
-				<div> 
-				{{ post.videoURL|convert_youtube_to_embed|safe }} 
-				</div> 
-				<div>
-					{{ post.dateCreated }}
+			<div class = "row">
+				<div class = "col-lg-4"></div>
+				<div class = "col-lg-4">
+					<h1> Jeff's Blog </h1>
 				</div>
-				<div style = "margin: 0 auto; max-width: 560px;"> 
-				{{ post.content }}
+				<div class = "col-lg-4">
+					<img src = "{% static 'Blog/images/warrior.jpg' %}" class = "img-circle" width = "200" height = "168">
 				</div>
 			</div>
 		</div>
-	{% endfor %}
 	</div>
+	{% for post in posts %}
+	<div class = "container text-center" style = "margin: 0 auto; max-width: 700px;">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h3>{{ post.title }}</h3></div>
+		</div>
+		<div>{{ post.videoURL|convert_youtube_to_embed|safe }}</div>
+		<div>{{ post.dateCreated }}</div>
+		<p class = "text-justify" style = "margin: 0 auto; max-width: 560px;"> 
+			{{ post.content }}
+		</p>
+		<br>
+	</div>
+	{% endfor %}
 </body>
 </html> 
