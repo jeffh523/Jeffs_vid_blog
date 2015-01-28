@@ -5,46 +5,58 @@
 	{% endblock %}
 	{% load staticfiles %}
 	<title> Jeff's Blog </title>
-	<link type="text/css" rel="stylesheet" href="{% static 'Blog/css/blogstylesheet.css' %}" />
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>	
-	<link href='http://fonts.googleapis.com/css?family=Oxygen:400' rel='stylesheet' type='text/css'>
+	<meta charset = "utf-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="{% static 'Blog/bootstrap/css/bootstrap.min.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="{% static 'Blog/bootstrap/js/bootstrap.min.js' %}"></script>
 	{% block stylesheets %}
 	{% endblock %}
 </head>
 <body>
 	{% load Blog_extras %}
-	<div id = "header" class = "no-select text-shadow">
-		<h1> JEFF'S BLOG. </h1>
-	</div>
-	<ul id = "navbar">
-		<li><a href = "#"> Home </a></li>
-		<li><a href = "/about_me"> About Me </a></li>
-		<li><a href = "#">Projects</a>
-			<ul>
-				<li><a href = "/asteroid_field/"> Asteroids </a></li>
-				<li><a href = "https://github.com/jeffh523/"> GitHub </a></li>
-			</ul>
-		</li>
-		<li><a href = "/contact"> Contact </a></li>
-	</ul>
-	<div style = "clear:both"></div>
-	<div id = "content-container">
-		{% for post in posts %}
-		<div class="post">
-			<h2 class="post-title no-select text-shadow">{{ post.title }}</h2>
-			<div class="post-video"> 
-				{{ post.videoURL|convert_youtube_to_embed|safe }} 
-			</div> 
-			<div class="post-date-created">
-				{{ post.dateCreated }}
+	<nav class = "navbar navbar-inverse">
+		<div class = "container-fluid">
+			<div class = "navbar-header">
+				<a class = "navbar-brand" href = "#">Jeff's Blog</a>
 			</div>
-			<div class="post-content"> 
-				{{ post.content }}
+			<div>
+				<ul class = "nav navbar-nav">
+					<li class = "active"><a href = "#"> Home </a></li>
+					<li><a href = "/about_me"> About Me </a></li>
+					<li class = "dropdown"><a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">Projects <span class = "caret"></span></a>
+						<ul class = "dropdown-menu">
+							<li><a href = "/asteroid_field/"> Asteroids </a></li>
+							<li><a href = "https://github.com/jeffh523/"> GitHub </a></li>
+						</ul>
+					</li>
+					<li><a href = "/contact"> Contact </a></li>
+				</ul>
 			</div>
 		</div>
-		<br />
-		{% endfor %}
-	</div>	
+	</nav>
+	<div class = "container">
+		<div class = "jumbotron text-center">
+			<h1> Jeff's Blog </h1>
+		</div>
+	</div>
+	<div class = "container">
+	{% for post in posts %}
+		<div class = "container">
+			<div class = "text-center" style = "margin: 0 auto;">
+				<h2>{{ post.title }}</h2>
+				<div> 
+				{{ post.videoURL|convert_youtube_to_embed|safe }} 
+				</div> 
+				<div>
+					{{ post.dateCreated }}
+				</div>
+				<div style = "margin: 0 auto; max-width: 560px;"> 
+				{{ post.content }}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 	</div>
 </body>
 </html> 
