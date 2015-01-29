@@ -8,6 +8,7 @@
 	<meta charset = "utf-8">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="{% static 'Blog/bootstrap/css/bootstrap.min.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'Blog/bootstrap/css/slate.css' %}" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="{% static 'Blog/bootstrap/js/bootstrap.min.js' %}"></script>
 	{% block stylesheets %}
@@ -51,7 +52,7 @@
 	{% for post in posts %}
 	<div class = "container text-center" style = "margin: 0 auto; max-width: 700px;">
 		<div class="panel panel-default">
-			<div class="panel-heading"><h3>{{ post.title }}</h3></div>
+			<div class="panel-heading" style = "border-bottom: none;"><h3>{{ post.title }}</h3></div>
 		</div>
 		<div>{{ post.videoURL|convert_youtube_to_embed|safe }}</div>
 		<div>{{ post.dateCreated }}</div>
