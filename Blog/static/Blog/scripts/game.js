@@ -48,7 +48,7 @@ function setup() {
 
 function createScene() {
 	var WIDTH = window.innerWidth,
-	    HEIGHT = window.innerHeight;
+	    HEIGHT = window.innerHeight * 0.9;
 
 	// set up camera vars
 	var VIEW_ANGLE = 45,
@@ -128,17 +128,17 @@ function createScene() {
 	// Create a div for showing the score
 	scoreTxt = document.createElement('scoreTxt');
 	scoreTxt.style.position = 'absolute';
-	scoreTxt.style.width = 60;
-	scoreTxt.style.height = 30;
+	scoreTxt.style.width = 50;
+	scoreTxt.style.height = 20;
 	scoreTxt.innerHTML = 'Score';
-	scoreTxt.style.top = (HEIGHT * 0.88) + 'px';
-	scoreTxt.style.left = (WIDTH * 0.43) + 'px';
+	scoreTxt.style.top = (HEIGHT * 0.97) + 'px';
+	scoreTxt.style.left = (WIDTH * 0.44) + 'px';
 	scoreTxt.style.backgroundColor = '#3333FF';
 	scoreTxt.style.color = 'white';
 	scoreTxt.style.textShadow = '-1px -1px 0 black ,1px -1px 0 black';
 	scoreTxt.style.border = '2px solid white';
 	scoreTxt.style.borderRadius = '10px'
-	scoreTxt.style.fontSize = 32 + 'px';
+	scoreTxt.style.fontSize = 24 + 'px';
 	scoreTxt.style.fontWeight = 'bold';
 	scoreTxt.style.padding = '12px 30px';
 	scoreTxt.setAttribute('id', 'scoreTxt');
@@ -150,10 +150,10 @@ function createScene() {
 	msg.style.width = 60;
 	msg.style.height = 30;
 	msg.innerHTML = '';
-	msg.style.top = (HEIGHT * 0.07) + 'px';
-	msg.style.left = (WIDTH * 0.43) + 'px';
+	msg.style.top = (HEIGHT * 0.2) + 'px';
+	msg.style.left = (WIDTH * 0.44) + 'px';
 	msg.style.color = 'white';
-	msg.style.fontSize = 40 + 'px';
+	msg.style.fontSize = 30 + 'px';
 	msg.style.fontWeight = 'bold';
 	msg.style.padding = 10 + 'px';
 	msg.setAttribute('id', 'msg');
@@ -162,16 +162,16 @@ function createScene() {
 	// Create a div for showing controls and how to play again
 	instructions = document.createElement('instructions');
 	instructions.style.position = 'absolute';
-	instructions.style.width = 50;
-	instructions.style.height = 50;
+	instructions.style.width = 40;
+	instructions.style.height = 40;
 	instructions.innerHTML = 'Move: W, A, S, D' + '<br/>' 
-								+ 'Roll Left/Right: K, L';
-	instructions.style.top = (HEIGHT * 0.8) + 'px';
+							+ 'Roll Left/Right: K, L';
+	instructions.style.top = (HEIGHT * 0.85) + 'px';
 	instructions.style.left = (WIDTH * 0.02) + 'px';
 	instructions.style.color = 'white';
 	instructions.style.borderRadius = '10px'
-	instructions.style.fontSize = 24 + 'px';
-	instructions.style.padding = '20px 20px';
+	instructions.style.fontSize = 20 + 'px';
+	instructions.style.padding = '12px 12px';
 	instructions.style.textAlign = 'center';
 	instructions.setAttribute('id', 'instructions');
 	document.body.appendChild(instructions);
@@ -403,7 +403,7 @@ function gameOver() {
 	scene.add(gameOverTxt);
 	gameOverTxt.position.set(-70, 80, 200);
 
-	instructions.innerHTML = 'REFRESH TO PLAY AGAIN' + '<br/><br/>'  
+	instructions.innerHTML = 'REFRESH TO PLAY AGAIN' + '<br/>'  
 			+ 'Move: W, A, S, D' + '<br/>' 
 			+ 'Roll Left/Right: K, L';
 }

@@ -3,6 +3,12 @@
 	<head>
 		{% load staticfiles %}
 		<title>Jeff's Blog - Asteroids</title>
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="{% static 'Blog/bootstrap/css/bootstrap.min.css' %}" />
+		<link type="text/css" rel="stylesheet" href="{% static 'Blog/bootstrap/css/slate.css' %}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{% static 'Blog/bootstrap/js/bootstrap.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'Blog/scripts/game.js' %}"></script>
 		<style>
 			body {
@@ -15,6 +21,26 @@
 		</style>
 	</head>
 	<body onload='setup();'>
+		<nav class = "navbar navbar-inverse">
+			<div class = "container-fluid">
+				<div class = "navbar-header">
+					<a class = "navbar-brand" href = "/">Jeff's Blog</a>
+				</div>
+				<div>
+					<ul class = "nav navbar-nav">
+						<li><a href = "/"> Home </a></li>
+						<li><a href = "/about_me"> About Me </a></li>
+						<li class = "dropdown active"><a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">Projects <span class = "caret"></span></a>
+							<ul class = "dropdown-menu">
+								<li><a href = "#"> Asteroids </a></li>
+								<li><a href = "https://github.com/jeffh523/"> GitHub </a></li>
+							</ul>
+						</li>
+						<li><a href = "/contact"> Contact </a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 		<script src="{% static 'Blog/scripts/three.min.js' %}"></script>
 		<script src="http://mrdoob.github.com/three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
 		<script src="{% static 'Blog/scripts/keyboard.js' %}"></script>
